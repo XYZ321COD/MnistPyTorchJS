@@ -96,6 +96,9 @@ export default function App() {
   }
 
   function handleMove(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
     if (mousedown) {
       const ctx = canvas.current.getContext("2d");
       ctx.beginPath();
@@ -159,6 +162,9 @@ export default function App() {
                 onMouseDown={handleMouseDown}
                 onMouseUp={handleMouseUp}
                 onMouseMove={handleMove}
+                onTouchStart={handleMouseDown}
+                onTouchEnd={handleMouseUp}
+                onTouchMove={handleMove}
                 ref={canvas}
                 width={207}
                 height={207}
