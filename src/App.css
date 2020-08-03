@@ -1,0 +1,26 @@
+.canvas2 {
+  margin-top: 200px;
+  border: 5px solid #ee4c2c;
+  box-shadow: 0 0 0.25em 0.25em rgba(0, 0, 0, 0.25);
+}
+
+.text2 {
+  margin-top: 150px;
+}
+.canvas3 {
+  border: 5px solid #ee4c2c;
+  width: 700px;
+  height: 350px;
+  box-shadow: 0 0 0.25em 0.25em rgba(0, 0, 0, 0.25);
+}
+
+.img_src {
+  width: 15%;
+  height: 15%;
+}
+
+.centered {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ee4c2c;
+}
