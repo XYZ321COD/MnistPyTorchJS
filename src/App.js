@@ -166,15 +166,16 @@ export default function App() {
                 onTouchEnd={handleMouseUp}
                 onTouchMove={function (e) {
                   window.alert("Moving touch");
-                  var touch = e.touches[0];
+                  // var touch = e.touches[0];
+                  window.alert(coords.x + " " + coords.y);
+
                   const ctx = canvas.current.getContext("2d");
                   ctx.beginPath();
                   ctx.moveTo(coords.x, coords.y);
                   setCoords({
-                    x: touch.clientX,
-                    y: touch.clientY,
+                    x: e.nativeEvent.offsetX,
+                    y: e.nativeEvent.offsetY,
                   });
-                  window.alert(coords.x);
                   ctx.lineTo(coords.x, coords.y);
                   ctx.strokeStyle = "black";
                   ctx.lineCap = "round";
