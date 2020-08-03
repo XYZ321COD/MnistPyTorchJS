@@ -197,7 +197,7 @@ export default function App() {
               />
             </div>
             <div class="row">
-              <div class="btn-group" role="group">
+              <div class="btn-group buttonsgroup" role="group">
                 <button
                   type="button"
                   onClick={buttonClick}
