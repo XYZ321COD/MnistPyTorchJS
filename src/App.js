@@ -162,19 +162,28 @@ export default function App() {
                 onMouseDown={handleMouseDown}
                 onMouseUp={handleMouseUp}
                 onMouseMove={handleMove}
-                onTouchStart={handleMouseDown}
+                onTouchStart={function (e) {
+                  setCoords({
+                    x:
+                      e.touches[0].clientX -
+                      canvas.current.getBoundingClientRect().left,
+                    y:
+                      e.touches[0].clientY -
+                      canvas.current.getBoundingClientRect().top,
+                  });
+                }}
                 onTouchEnd={handleMouseUp}
                 onTouchMove={function (e) {
-                  window.alert("Moving touch");
-                  // var touch = e.touches[0];
-                  window.alert(coords.x + " " + coords.y);
-
                   const ctx = canvas.current.getContext("2d");
                   ctx.beginPath();
                   ctx.moveTo(coords.x, coords.y);
                   setCoords({
-                    x: e.nativeEvent.offsetX,
-                    y: e.nativeEvent.offsetY,
+                    x:
+                      e.touches[0].clientX -
+                      canvas.current.getBoundingClientRect().left,
+                    y:
+                      e.touches[0].clientY -
+                      canvas.current.getBoundingClientRect().top,
                   });
                   ctx.lineTo(coords.x, coords.y);
                   ctx.strokeStyle = "black";
