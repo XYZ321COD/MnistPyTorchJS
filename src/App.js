@@ -87,7 +87,7 @@ export default function App() {
 
   function handleMouseDown(e) {
     setCoords({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
-    window.alert("MouseDown");
+    // window.alert("MouseDown");
     setMouseDown(true);
   }
 
@@ -96,8 +96,8 @@ export default function App() {
   }
 
   function handleMove(e) {
-    e.preventDefault();
-    e.stopPropagation();
+    // e.preventDefault();
+    // e.stopPropagation();
 
     if (mousedown) {
       const ctx = canvas.current.getContext("2d");
@@ -165,26 +165,20 @@ export default function App() {
                 onTouchStart={handleMouseDown}
                 onTouchEnd={handleMouseUp}
                 onTouchMove={function (e) {
-                  window.alert("XD");
+                  window.alert("Moving touch");
                   var touch = e.touches[0];
-                  var mouseEvent = new MouseEvent(
-                    "mousemove",
-                    {
-                      if(mousedown) {
-                        const ctx = canvas.current.getContext("2d");
-                        ctx.beginPath();
-                        ctx.moveTo(coords.x, coords.y);
-                        setCoords({ x: touch.clientX, y: touch.clientY });
-                        ctx.lineTo(coords.x, coords.y);
-                        ctx.strokeStyle = "black";
-                        ctx.lineCap = "round";
-                        ctx.lineWidth = 10;
-                        ctx.stroke();
-                      },
-                    },
-                    false
-                  );
-                  canvas.dispatchEvent(mouseEvent);
+                  const ctx = canvas.current.getContext("2d");
+                  ctx.beginPath();
+                  ctx.moveTo(coords.x, coords.y);
+                  setCoords({
+                    x: e.nativeEvent.offsetX,
+                    y: e.nativeEvent.offsetY,
+                  });
+                  ctx.lineTo(coords.x, coords.y);
+                  ctx.strokeStyle = "black";
+                  ctx.lineCap = "round";
+                  ctx.lineWidth = 10;
+                  ctx.stroke();
                 }}
                 ref={canvas}
                 width={207}
