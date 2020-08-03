@@ -11,7 +11,7 @@ export default function App() {
   const canvas = useRef(null);
   const canvas2 = useRef(null);
 
-  useEffect(async () => {
+  useEffect(() => {
     const ctx2 = canvas2.current.getContext("2d");
     var myChart = new Chart(ctx2, {
       type: "bar",
