@@ -164,7 +164,18 @@ export default function App() {
                 onMouseMove={handleMove}
                 onTouchStart={handleMouseDown}
                 onTouchEnd={handleMouseUp}
-                onTouchMove={handleMove}
+                onTouchMove={function (e) {
+                  var touch = e.touches[0];
+                  var mouseEvent = new MouseEvent(
+                    "mousemove",
+                    {
+                      clientX: touch.clientX,
+                      clientY: touch.clientY,
+                    },
+                    false
+                  );
+                  canvas.dispatchEvent(mouseEvent);
+                }}
                 ref={canvas}
                 width={207}
                 height={207}
