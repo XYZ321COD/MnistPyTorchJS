@@ -190,6 +190,7 @@ export default function App() {
                   ctx.lineCap = "round";
                   ctx.lineWidth = 10;
                   ctx.stroke();
+                  return false;
                 }}
                 ref={canvas}
                 width={207}
