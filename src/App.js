@@ -87,8 +87,7 @@ export default function App() {
 
   function handleMouseDown(e) {
     setCoords({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
-    window.alert("XD");
-
+    window.alert("MouseDown");
     setMouseDown(true);
   }
 
@@ -171,8 +170,17 @@ export default function App() {
                   var mouseEvent = new MouseEvent(
                     "mousemove",
                     {
-                      clientX: touch.clientX,
-                      clientY: touch.clientY,
+                      if(mousedown) {
+                        const ctx = canvas.current.getContext("2d");
+                        ctx.beginPath();
+                        ctx.moveTo(coords.x, coords.y);
+                        setCoords({ x: touch.clientX, y: touch.clientY });
+                        ctx.lineTo(coords.x, coords.y);
+                        ctx.strokeStyle = "black";
+                        ctx.lineCap = "round";
+                        ctx.lineWidth = 10;
+                        ctx.stroke();
+                      },
                     },
                     false
                   );
