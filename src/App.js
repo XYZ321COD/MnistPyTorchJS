@@ -66,10 +66,10 @@ export default function App() {
 
   async function buttonClick(e) {
     const ctx = canvas.current.getContext("2d");
-    const scaled = ctx.drawImage(canvas.current, 0, 0, 28, 28);
+    ctx.drawImage(canvas.current, 0, 0, 28, 28);
     const scaled_image = ctx.getImageData(0, 0, 28, 28);
     const sess = new InferenceSession();
-    const loadingModelPromise = await sess.loadModel(model);
+    await sess.loadModel(model);
     const input = new Tensor(new Float32Array(scaled_image.data), "float32");
     const outputMap = await sess.run([input]);
     const outputTensor = outputMap.values().next().value;
@@ -80,7 +80,6 @@ export default function App() {
   }
   function erase(e) {
     const ctx = canvas.current.getContext("2d");
-    const ctx2 = canvas2.current.getContext("2d");
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     chart.data.datasets[0].data = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     chart.update();
@@ -135,7 +134,7 @@ export default function App() {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <img className="img_src" src={require("./pytorch.svg")}></img>
+          <img alt="" className="img_src" src={require("./pytorch.svg")}></img>
         </div>
       </nav>
       <div class="container">
