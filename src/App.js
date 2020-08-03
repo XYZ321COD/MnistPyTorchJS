@@ -87,6 +87,7 @@ export default function App() {
 
   function handleMouseDown(e) {
     setCoords({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
+    window.alert("XD");
 
     setMouseDown(true);
   }
@@ -165,6 +166,7 @@ export default function App() {
                 onTouchStart={handleMouseDown}
                 onTouchEnd={handleMouseUp}
                 onTouchMove={function (e) {
+                  window.alert("XD");
                   var touch = e.touches[0];
                   var mouseEvent = new MouseEvent(
                     "mousemove",
