@@ -171,9 +171,10 @@ export default function App() {
                   ctx.beginPath();
                   ctx.moveTo(coords.x, coords.y);
                   setCoords({
-                    x: e.nativeEvent.offsetX,
-                    y: e.nativeEvent.offsetY,
+                    x: touch.clientX,
+                    y: touch.clientY,
                   });
+                  window.alert(coords.x);
                   ctx.lineTo(coords.x, coords.y);
                   ctx.strokeStyle = "black";
                   ctx.lineCap = "round";
