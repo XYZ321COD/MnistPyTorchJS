@@ -173,25 +173,28 @@ export default function App() {
                   });
                 }}
                 onTouchEnd={handleMouseUp}
-                onTouchMove={function (e) {
-                  const ctx = canvas.current.getContext("2d");
-                  ctx.beginPath();
-                  ctx.moveTo(coords.x, coords.y);
-                  setCoords({
-                    x:
-                      e.touches[0].clientX -
-                      canvas.current.getBoundingClientRect().left,
-                    y:
-                      e.touches[0].clientY -
-                      canvas.current.getBoundingClientRect().top,
-                  });
-                  ctx.lineTo(coords.x, coords.y);
-                  ctx.strokeStyle = "black";
-                  ctx.lineCap = "round";
-                  ctx.lineWidth = 10;
-                  ctx.stroke();
-                  return false;
-                }}
+                onTouchMove={
+                  (function (e) {
+                    const ctx = canvas.current.getContext("2d");
+                    ctx.beginPath();
+                    ctx.moveTo(coords.x, coords.y);
+                    setCoords({
+                      x:
+                        e.touches[0].clientX -
+                        canvas.current.getBoundingClientRect().left,
+                      y:
+                        e.touches[0].clientY -
+                        canvas.current.getBoundingClientRect().top,
+                    });
+                    ctx.lineTo(coords.x, coords.y);
+                    ctx.strokeStyle = "black";
+                    ctx.lineCap = "round";
+                    ctx.lineWidth = 10;
+                    ctx.stroke();
+                    return false;
+                  },
+                  false)
+                }
                 ref={canvas}
                 width={207}
                 height={207}
