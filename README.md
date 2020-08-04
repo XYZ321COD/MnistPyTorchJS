@@ -1,5 +1,5 @@
-Recognizing handwritten digits in real time in the browser.
-This project was created using PyTorch, Onnxjs, React.
+# Recognizing handwritten digits in real time in the browser
+This project was created using PyTorch, Onnxjs, React.<br/>
 This is small in-between project for object detection in real-time
 
 
