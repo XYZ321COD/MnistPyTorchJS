@@ -1,0 +1,10 @@
+@media only screen and (max-width: 992px) {
+  .canvas2 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .buttonsgroup {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
